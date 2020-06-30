@@ -61,7 +61,7 @@
             border-color: darkcyan;
         }
 
-        .man {
+        .player {
             position: relative;
             width: 25px;
             height: 25px;
@@ -72,7 +72,7 @@
             border-style: none;
         }
 
-        .whiteman {
+        .whiteplayer {
             background-color: white;
         }
 
