@@ -4,9 +4,11 @@ const maxx = 21;
 const maxy = 21;
 const minx = -1;
 const miny = -1;
+// var playerm = $("#playerman");
 
 
-let player = document.querySelector("#player");
+
+let player = document.querySelector("#playerm");
 
 console.log(player);
 
@@ -27,6 +29,8 @@ document.onkeydown = function () {
             playerx--;
             if (playerx == minx) {
                 playerx = minx + 1;
+                document.getElementById('posX').innerHTML = playerx;
+                document.getElementById('posY').innerHTML = playery;
             }
             break;
         case 38:
@@ -34,12 +38,16 @@ document.onkeydown = function () {
             playery--;
             if (playery == miny) {
                 playery = miny + 1;
+                document.getElementById('posX').innerHTML = playerx;
+                document.getElementById('posY').innerHTML = playery;
             } break;
         case 39:
             console.log('Right key is pressed');
             playerx++;
             if (playerx == maxx) {
                 playerx = maxx - 1;
+                document.getElementById('posX').innerHTML = playerx;
+                document.getElementById('posY').innerHTML = playery;
             }
             break;
         case 40:
@@ -47,10 +55,18 @@ document.onkeydown = function () {
             playery++;
             if (playery == maxy) {
                 playery = maxy - 1;
+                document.getElementById('posX').innerHTML = playerx;
+                document.getElementById('posY').innerHTML = playery;
             }
             break;
     }
-    console.log(playerx);
-    console.log(playery);
+    
+    
+    // player.style.left = 300+"px";
+
+    // document.getElementById('#playerman').left = (playerx);
+
+    document.getElementById('playerman').style.left = playerx+"px";
+    // document.getElementById('texto').innerText = "Textb";
 
 };

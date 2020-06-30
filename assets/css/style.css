@@ -51,8 +51,8 @@
         /* ------------------------------------------------------------------------------- */
 
         .gameboard {
-            width: 500px;
-            height: 500px;
+            width: 520px;
+            height: 520px;
             margin-top: 5%;
             margin-left: 5%;
             background-color: cyan;
@@ -65,8 +65,8 @@
             position: relative;
             width: 25px;
             height: 25px;
-            margin-top: 50%;
-            margin-left: 50%;
+            left: 250px;
+            top: 250px;
             transform: translatex(-12.5px);
             transform: translatey(-12.5px);
             border-style: none;
