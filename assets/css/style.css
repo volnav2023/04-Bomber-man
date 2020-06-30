@@ -69,10 +69,11 @@
             margin-left: 50%;
             transform: translatex(-12.5px);
             transform: translatey(-12.5px);
+            border-style: none;
+        }
+
+        .whiteman {
             background-color: white;
-            border-style: solid;
-            border-width: 1px;
-            border-color: black;
         }
 
         @media screen and (max-width:750px) {}
