@@ -10,14 +10,14 @@ var playerh = 30;
 var playerw = 30;
 var playerx = boardh / playerh / 2;
 var playery = boardw / playerw / 2;
-var ennemyh = 30;
-var ennemyw = 30;
-var ennemy1x = boardh / ennemyh / 2;
-var ennemy1y = boardw / ennemyw / 2;
-var ennemy2x = boardh / ennemyh / 2;
-var ennemy2y = boardw / ennemyw / 2;
-var ennemy3x = boardh / ennemyh / 2;
-var ennemy3y = boardw / ennemyw / 2;
+var enemyh = 30;
+var enemyw = 30;
+var enemy1x = boardh / enemyh / 2;
+var enemy1y = boardw / enemyw / 2;
+var enemy2x = boardh / enemyh / 2;
+var enemy2y = boardw / enemyw / 2;
+var enemy3x = boardh / enemyh / 2;
+var enemy3y = boardw / enemyw / 2;
 const maxx = boardh / playerh;
 const maxy = boardw / playerw;
 const minx = -1;
@@ -29,74 +29,29 @@ function removewhite() {
     playerid.classList.remove("whiteman");
 }
 
-function moveplayerleft() {
-    playerid.classList.remove("whiteman");
-}
-
-// document.addEventListener("keydown", removewhite);
-
 document.onkeydown = function () {
     switch (window.event.keyCode) {
         case 37:
             console.log('Left key is pressed');
             playerx--;
-            if (playerx <= minx) {
-                playerx = minx + 1;
-            }
+            if (playerx <= minx) { playerx = minx + 1; }
             break;
         case 38:
             console.log('Up key is pressed');
             playery--;
-            if (playery <= miny) {
-                playery = miny + 1;
-            }
+            if (playery <= miny) { playery = miny + 1; }
             break;
         case 39:
             console.log('Right key is pressed');
             playerx++;
-            if (playerx >= maxx) {
-                playerx = maxx - 1;
-            }
+            if (playerx >= maxx) { playerx = maxx - 1; }
             break;
         case 40:
             console.log('Down key is pressed');
             playery++;
-            if (playery >= maxy) {
-                playery = maxy - 1;
-            }
+            if (playery >= maxy) { playery = maxy - 1; }
             break;
     }
-
-    ennemy1x = ennemy1x + Math.round(Math.random()) - 0.5;
-    ennemy1y = ennemy1y + Math.round(Math.random()) - 0.5;
-    ennemy2x = ennemy2x + Math.round(Math.random()) - 0.5;
-    ennemy2y = ennemy2y + Math.round(Math.random()) - 0.5;
-    ennemy3x = ennemy3x + Math.round(Math.random()) - 0.5;
-    ennemy3y = ennemy3y + Math.round(Math.random()) - 0.5;
-
-    if (ennemy1x <= minx) { ennemy1x = minx + 1; }
-    if (ennemy1y <= miny) { ennemy1y = miny + 1; }
-    if (ennemy1x >= maxx) { ennemy1x = maxx - 1; }
-    if (ennemy1y >= maxy) { ennemy1y = maxy - 1; }
-    
-    if (ennemy2x <= minx) { ennemy2x = minx + 1; }
-    if (ennemy2y <= miny) { ennemy2y = miny + 1; }
-    if (ennemy2x >= maxx) { ennemy2x = maxx - 1; }
-    if (ennemy2y >= maxy) { ennemy2y = maxy - 1; }
-    
-    if (ennemy3x <= minx) { ennemy3x = minx + 1; }
-    if (ennemy3y <= miny) { ennemy3y = miny + 1; }
-    if (ennemy3x >= maxx) { ennemy3x = maxx - 1; }
-    if (ennemy3y >= maxy) { ennemy3y = maxy - 1; }
-
-    document.getElementById('playerman').style.left = playerx * playerw + "px";
-    document.getElementById('playerman').style.top = playery * playerh + playerh / 2 + "px";
-    document.getElementById('ennemy1').style.left = ennemy1x * ennemyw + "px";
-    document.getElementById('ennemy1').style.top = ennemy1y * ennemyh + ennemyh / 2 + "px";
-    document.getElementById('ennemy2').style.left = ennemy2x * ennemyw + "px";
-    document.getElementById('ennemy2').style.top = ennemy2y * ennemyh + ennemyh / 2 + "px";
-    document.getElementById('ennemy3').style.left = ennemy3x * ennemyw + "px";
-    document.getElementById('ennemy3').style.top = ennemy3y * ennemyh + ennemyh / 2 + "px";
 
     // Pour debugger et comprendre
     let posXid = document.getElementById('posX');
@@ -112,4 +67,38 @@ document.onkeydown = function () {
     document.getElementById('posY').innerHTML = playery;
     // Fin - Pour debugger et comprendre
 
-};
+    function moveenemies() {
+        enemy1x = enemy1x + Math.round(Math.random()) - 0.5;
+        enemy1y = enemy1y + Math.round(Math.random()) - 0.5;
+        enemy2x = enemy2x + Math.round(Math.random()) - 0.5;
+        enemy2y = enemy2y + Math.round(Math.random()) - 0.5;
+        enemy3x = enemy3x + Math.round(Math.random()) - 0.5;
+        enemy3y = enemy3y + Math.round(Math.random()) - 0.5;
+        document.getElementById('enemy1').style.left = enemy1x * enemyw + "px";
+        document.getElementById('enemy1').style.top = enemy1y * enemyh + enemyh / 2 + "px";
+        document.getElementById('enemy2').style.left = enemy2x * enemyw + "px";
+        document.getElementById('enemy2').style.top = enemy2y * enemyh + enemyh / 2 + "px";
+        document.getElementById('enemy3').style.left = enemy3x * enemyw + "px";
+        document.getElementById('enemy3').style.top = enemy3y * enemyh + enemyh / 2 + "px";
+        setTimeout(moveenemies, 1000);
+    }
+    setTimeout(moveenemies, 1000);
+
+    if (enemy1x <= minx) { enemy1x = minx + 1; }
+    if (enemy1y <= miny) { enemy1y = miny + 1; }
+    if (enemy1x >= maxx) { enemy1x = maxx - 1; }
+    if (enemy1y >= maxy) { enemy1y = maxy - 1; }
+
+    if (enemy2x <= minx) { enemy2x = minx + 1; }
+    if (enemy2y <= miny) { enemy2y = miny + 1; }
+    if (enemy2x >= maxx) { enemy2x = maxx - 1; }
+    if (enemy2y >= maxy) { enemy2y = maxy - 1; }
+
+    if (enemy3x <= minx) { enemy3x = minx + 1; }
+    if (enemy3y <= miny) { enemy3y = miny + 1; }
+    if (enemy3x >= maxx) { enemy3x = maxx - 1; }
+    if (enemy3y >= maxy) { enemy3y = maxy - 1; }
+
+    document.getElementById('playerman').style.left = playerx * playerw + "px";
+    document.getElementById('playerman').style.top = playery * playerh + playerh / 2 + "px";
+}

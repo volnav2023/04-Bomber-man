@@ -76,7 +76,7 @@
             background-color: white;
         }
 
-        .ennemy {
+        .enemy {
             position: relative ;
             width: 30px;
             height: 30px;
@@ -87,8 +87,15 @@
             border-width: 0px;
         }
 
-        .blackennemy {
-            background-color: black;
+        .blueenemy {
+            background-color: blue;
+        }
+
+        .enemytag {
+            position: relative;
+            left: 10px;
+            top: 10px;
+            color: red;
         }
 
         @media screen and (max-width:750px) {}
