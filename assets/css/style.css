@@ -67,14 +67,28 @@
             height: 30px;
             left: 300px;
             top: 300px;
-            transform: translatex(-12.5px);
-            transform: translatey(-12.5px);
+            transform: translate(-15px,-15px);
             border-style: none;
             border-width: 0px;
         }
 
         .whiteplayer {
             background-color: white;
+        }
+
+        .ennemy {
+            position: relative ;
+            width: 30px;
+            height: 30px;
+            left: 600px;
+            top: 600px;
+            transform: translate(-15px,-15px);
+            border-style: none;
+            border-width: 0px;
+        }
+
+        .blackennemy {
+            background-color: black;
         }
 
         @media screen and (max-width:750px) {}
