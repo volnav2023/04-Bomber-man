@@ -53,8 +53,8 @@
         .gameboard {
             width: 600px;
             height: 600px;
-            margin-top: 5%;
-            margin-left: 5%;
+            margin-top: 0%;
+            margin-left: 0%;
             background-color: cyan;
             border-style: ridge;
             border-width: 15px;
@@ -62,7 +62,7 @@
         }
 
         .player {
-            position: relative;
+            position: absolute;
             width: 30px;
             height: 30px;
             left: 300px;
@@ -77,7 +77,7 @@
         }
 
         .enemy {
-            position: relative ;
+            position: absolute ;
             width: 30px;
             height: 30px;
             left: 600px;
@@ -92,10 +92,25 @@
         }
 
         .enemytag {
-            position: relative;
+            position: absolute;
             left: 10px;
             top: 10px;
             color: red;
+        }
+
+        .bomb {
+            position: absolute ;
+            width: 30px;
+            height: 30px;
+            left: 600px;
+            top: 600px;
+            transform: translate(-15px,-15px);
+            border-style: none;
+            border-width: 0px;
+        }
+
+        .redbomb {
+            background-color: red;
         }
 
         @media screen and (max-width:750px) {}

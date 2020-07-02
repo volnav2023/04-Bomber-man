@@ -21,6 +21,7 @@ const maxx = boardh / playerh;
 const maxy = boardw / playerw;
 const minx = -1;
 const miny = -1;
+const refreshtime = 500;
 
 let playerid = document.querySelector("#playerman");
 
@@ -43,6 +44,10 @@ document.onkeydown = function () {
         case 40:
             playery++;
             break;
+        case 32:
+            document.getElementById('bomb1').style.left = playerx * playerw + "px";
+            document.getElementById('bomb1').style.top = playery * playerh + playerh / 2 + "px";
+            break;
     }
     if (playerx <= minx) { playerx = minx + 1; }
     if (playery <= miny) { playery = miny + 1; }
@@ -53,53 +58,53 @@ document.onkeydown = function () {
     document.getElementById('playerman').style.top = playery * playerh + playerh / 2 + "px";
 }
 
-    // // Pour debugger et comprendre
-    // let posXid = document.getElementById('posX');
-    // console.log(posXid.style);
+// // Pour debugger et comprendre
+// let posXid = document.getElementById('posX');
+// console.log(posXid.style);
 
-    // posXid.innerHTML = playerx;
+// posXid.innerHTML = playerx;
 
-    // var elem = document.getElementById("playerman");
-    // var theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
+// var elem = document.getElementById("playerman");
+// var theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
 
-    // console.log(theCSSprop);
+// console.log(theCSSprop);
 
-    // document.getElementById('posY').innerHTML = playery;
-    // // Fin - Pour debugger et comprendre
+// document.getElementById('posY').innerHTML = playery;
+// // Fin - Pour debugger et comprendre
 
-    let timerId = setTimeout(moveenemies, 1000);
+let timerId = setTimeout(moveenemies, refreshtime);
 
-    function moveenemies() {
-        console.log('moveenemies activated');
+function moveenemies() {
+    console.log('moveenemies activated');
 
-        enemy1x = enemy1x + Math.round(Math.random()) - 0.5;
-        enemy1y = enemy1y + Math.round(Math.random()) - 0.5;
-        enemy2x = enemy2x + Math.round(Math.random()) - 0.5;
-        enemy2y = enemy2y + Math.round(Math.random()) - 0.5;
-        enemy3x = enemy3x + Math.round(Math.random()) - 0.5;
-        enemy3y = enemy3y + Math.round(Math.random()) - 0.5;
+    enemy1x = enemy1x + Math.round(Math.random()) - 0.5;
+    enemy1y = enemy1y + Math.round(Math.random()) - 0.5;
+    enemy2x = enemy2x + Math.round(Math.random()) - 0.5;
+    enemy2y = enemy2y + Math.round(Math.random()) - 0.5;
+    enemy3x = enemy3x + Math.round(Math.random()) - 0.5;
+    enemy3y = enemy3y + Math.round(Math.random()) - 0.5;
 
-        if (enemy1x <= minx) { enemy1x = minx + 1; }
-        if (enemy1y <= miny) { enemy1y = miny + 1; }
-        if (enemy1x >= maxx) { enemy1x = maxx - 1; }
-        if (enemy1y >= maxy) { enemy1y = maxy - 1; }
+    if (enemy1x <= minx) { enemy1x = minx + 1; }
+    if (enemy1y <= miny) { enemy1y = miny + 1; }
+    if (enemy1x >= maxx) { enemy1x = maxx - 1; }
+    if (enemy1y >= maxy) { enemy1y = maxy - 1; }
 
-        if (enemy2x <= minx) { enemy2x = minx + 1; }
-        if (enemy2y <= miny) { enemy2y = miny + 1; }
-        if (enemy2x >= maxx) { enemy2x = maxx - 1; }
-        if (enemy2y >= maxy) { enemy2y = maxy - 1; }
+    if (enemy2x <= minx) { enemy2x = minx + 1; }
+    if (enemy2y <= miny) { enemy2y = miny + 1; }
+    if (enemy2x >= maxx) { enemy2x = maxx - 1; }
+    if (enemy2y >= maxy) { enemy2y = maxy - 1; }
 
-        if (enemy3x <= minx) { enemy3x = minx + 1; }
-        if (enemy3y <= miny) { enemy3y = miny + 1; }
-        if (enemy3x >= maxx) { enemy3x = maxx - 1; }
-        if (enemy3y >= maxy) { enemy3y = maxy - 1; }
+    if (enemy3x <= minx) { enemy3x = minx + 1; }
+    if (enemy3y <= miny) { enemy3y = miny + 1; }
+    if (enemy3x >= maxx) { enemy3x = maxx - 1; }
+    if (enemy3y >= maxy) { enemy3y = maxy - 1; }
 
-        document.getElementById('enemy1').style.left = enemy1x * enemyw + "px";
-        document.getElementById('enemy1').style.top = enemy1y * enemyh + enemyh / 2 + "px";
-        document.getElementById('enemy2').style.left = enemy2x * enemyw + "px";
-        document.getElementById('enemy2').style.top = enemy2y * enemyh + enemyh / 2 + "px";
-        document.getElementById('enemy3').style.left = enemy3x * enemyw + "px";
-        document.getElementById('enemy3').style.top = enemy3y * enemyh + enemyh / 2 + "px";
+    document.getElementById('enemy1').style.left = enemy1x * enemyw + "px";
+    document.getElementById('enemy1').style.top = enemy1y * enemyh + enemyh / 2 + "px";
+    document.getElementById('enemy2').style.left = enemy2x * enemyw + "px";
+    document.getElementById('enemy2').style.top = enemy2y * enemyh + enemyh / 2 + "px";
+    document.getElementById('enemy3').style.left = enemy3x * enemyw + "px";
+    document.getElementById('enemy3').style.top = enemy3y * enemyh + enemyh / 2 + "px";
 
-        timerID = setTimeout(moveenemies, 1000);
-    }
+    timerID = setTimeout(moveenemies, refreshtime);
+}
