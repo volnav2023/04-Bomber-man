@@ -3,7 +3,6 @@
 // var playerw = document.getElementById('playerman').style.getPropertyValue("width");
 //     console.log(playerw);
 
-
 var boardh = 600;
 var boardw = 600;
 var playerh = 30;
@@ -30,75 +29,77 @@ function removewhite() {
 }
 
 document.onkeydown = function () {
+    console.log('onkeydown activated');
     switch (window.event.keyCode) {
         case 37:
-            console.log('Left key is pressed');
             playerx--;
-            if (playerx <= minx) { playerx = minx + 1; }
             break;
         case 38:
-            console.log('Up key is pressed');
             playery--;
-            if (playery <= miny) { playery = miny + 1; }
             break;
         case 39:
-            console.log('Right key is pressed');
             playerx++;
-            if (playerx >= maxx) { playerx = maxx - 1; }
             break;
         case 40:
-            console.log('Down key is pressed');
             playery++;
-            if (playery >= maxy) { playery = maxy - 1; }
             break;
     }
+    if (playerx <= minx) { playerx = minx + 1; }
+    if (playery <= miny) { playery = miny + 1; }
+    if (playerx >= maxx) { playerx = maxx - 1; }
+    if (playery >= maxy) { playery = maxy - 1; }
 
-    // Pour debugger et comprendre
-    let posXid = document.getElementById('posX');
-    console.log(posXid.style);
+    document.getElementById('playerman').style.left = playerx * playerw + "px";
+    document.getElementById('playerman').style.top = playery * playerh + playerh / 2 + "px";
+}
 
-    posXid.innerHTML = playerx;
+    // // Pour debugger et comprendre
+    // let posXid = document.getElementById('posX');
+    // console.log(posXid.style);
 
-    var elem = document.getElementById("playerman");
-    var theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
+    // posXid.innerHTML = playerx;
 
-    console.log(theCSSprop);
+    // var elem = document.getElementById("playerman");
+    // var theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
 
-    document.getElementById('posY').innerHTML = playery;
-    // Fin - Pour debugger et comprendre
+    // console.log(theCSSprop);
+
+    // document.getElementById('posY').innerHTML = playery;
+    // // Fin - Pour debugger et comprendre
+
+    let timerId = setTimeout(moveenemies, 1000);
 
     function moveenemies() {
+        console.log('moveenemies activated');
+
         enemy1x = enemy1x + Math.round(Math.random()) - 0.5;
         enemy1y = enemy1y + Math.round(Math.random()) - 0.5;
         enemy2x = enemy2x + Math.round(Math.random()) - 0.5;
         enemy2y = enemy2y + Math.round(Math.random()) - 0.5;
         enemy3x = enemy3x + Math.round(Math.random()) - 0.5;
         enemy3y = enemy3y + Math.round(Math.random()) - 0.5;
+
+        if (enemy1x <= minx) { enemy1x = minx + 1; }
+        if (enemy1y <= miny) { enemy1y = miny + 1; }
+        if (enemy1x >= maxx) { enemy1x = maxx - 1; }
+        if (enemy1y >= maxy) { enemy1y = maxy - 1; }
+
+        if (enemy2x <= minx) { enemy2x = minx + 1; }
+        if (enemy2y <= miny) { enemy2y = miny + 1; }
+        if (enemy2x >= maxx) { enemy2x = maxx - 1; }
+        if (enemy2y >= maxy) { enemy2y = maxy - 1; }
+
+        if (enemy3x <= minx) { enemy3x = minx + 1; }
+        if (enemy3y <= miny) { enemy3y = miny + 1; }
+        if (enemy3x >= maxx) { enemy3x = maxx - 1; }
+        if (enemy3y >= maxy) { enemy3y = maxy - 1; }
+
         document.getElementById('enemy1').style.left = enemy1x * enemyw + "px";
         document.getElementById('enemy1').style.top = enemy1y * enemyh + enemyh / 2 + "px";
         document.getElementById('enemy2').style.left = enemy2x * enemyw + "px";
         document.getElementById('enemy2').style.top = enemy2y * enemyh + enemyh / 2 + "px";
         document.getElementById('enemy3').style.left = enemy3x * enemyw + "px";
         document.getElementById('enemy3').style.top = enemy3y * enemyh + enemyh / 2 + "px";
-        setTimeout(moveenemies, 1000);
+
+        timerID = setTimeout(moveenemies, 1000);
     }
-    setTimeout(moveenemies, 1000);
-
-    if (enemy1x <= minx) { enemy1x = minx + 1; }
-    if (enemy1y <= miny) { enemy1y = miny + 1; }
-    if (enemy1x >= maxx) { enemy1x = maxx - 1; }
-    if (enemy1y >= maxy) { enemy1y = maxy - 1; }
-
-    if (enemy2x <= minx) { enemy2x = minx + 1; }
-    if (enemy2y <= miny) { enemy2y = miny + 1; }
-    if (enemy2x >= maxx) { enemy2x = maxx - 1; }
-    if (enemy2y >= maxy) { enemy2y = maxy - 1; }
-
-    if (enemy3x <= minx) { enemy3x = minx + 1; }
-    if (enemy3y <= miny) { enemy3y = miny + 1; }
-    if (enemy3x >= maxx) { enemy3x = maxx - 1; }
-    if (enemy3y >= maxy) { enemy3y = maxy - 1; }
-
-    document.getElementById('playerman').style.left = playerx * playerw + "px";
-    document.getElementById('playerman').style.top = playery * playerh + playerh / 2 + "px";
-}
