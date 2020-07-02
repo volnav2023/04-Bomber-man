@@ -1,3 +1,4 @@
+import Bomb from "./Bomb";
 // var playerh = document.getElementById('playerman').style.height;
 // var playerw = document.getElementById('playerman').style.width;
 // var playerw = document.getElementById('playerman').style.getPropertyValue("width");
@@ -30,7 +31,7 @@ function removewhite() {
 }
 
 document.onkeydown = function () {
-    console.log('onkeydown activated');
+    // console.log('onkeydown activated');
     switch (window.event.keyCode) {
         case 37:
             playerx--;
@@ -45,8 +46,16 @@ document.onkeydown = function () {
             playery++;
             break;
         case 32:
-            document.getElementById('bomb1').style.left = playerx * playerw + "px";
-            document.getElementById('bomb1').style.top = playery * playerh + playerh / 2 + "px";
+            let test = new Bomb(playerx * playerw + "px", playery * playerh + playerh / 2 + "px",5000);
+            test.drop();
+            var bombElement = document.createElement("div");
+            var gameboardElement = document.getElementById("gameboard");
+            bombElement.setAttribute("class", "redbomb");
+            gameboardElement.appendChild(bombElement);
+            // document.getElementById('bomb1').style.left = playerx * playerw + "px";
+            // document.getElementById('bomb1').style.top = playery * playerh + playerh / 2 + "px";
+            bombElement.style.left = playerx * playerw + "px";
+            bombElement.style.top = playery * playerh + playerh / 2 + "px";
             break;
     }
     if (playerx <= minx) { playerx = minx + 1; }
@@ -72,10 +81,10 @@ document.onkeydown = function () {
 // document.getElementById('posY').innerHTML = playery;
 // // Fin - Pour debugger et comprendre
 
-let timerId = setTimeout(moveenemies, refreshtime);
+// let timerId = setTimeout(moveenemies, refreshtime);
 
 function moveenemies() {
-    console.log('moveenemies activated');
+    // console.log('moveenemies activated');
 
     enemy1x = enemy1x + Math.round(Math.random()) - 0.5;
     enemy1y = enemy1y + Math.round(Math.random()) - 0.5;
@@ -106,5 +115,6 @@ function moveenemies() {
     document.getElementById('enemy3').style.left = enemy3x * enemyw + "px";
     document.getElementById('enemy3').style.top = enemy3y * enemyh + enemyh / 2 + "px";
 
-    timerID = setTimeout(moveenemies, refreshtime);
+    // timerID = setTimeout(moveenemies, refreshtime);
 }
+setInterval(moveenemies, refreshtime);
