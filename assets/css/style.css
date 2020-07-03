@@ -123,5 +123,8 @@
             border-radius: 50%;
             background-color: green;
         }
+        .explodedbomb {
+            opacity: 0;
+        }
 
         @media screen and (max-width:750px) {}

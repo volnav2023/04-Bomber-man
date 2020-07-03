@@ -10,8 +10,7 @@ export default class Bomb {
     drop = () => {
         console.log(this.x);
         console.log(this.y);
-        setTimeout(function () { console.log('timeout ds Bomb : ' + this.t) }, this.t);
- 
+        
         let bombElement = document.createElement("div");
         let gameboardElement = document.getElementById("gameboard");
         bombElement.setAttribute("class", this.bombColor);
@@ -20,5 +19,10 @@ export default class Bomb {
 
         document.getElementById(this.bombId).style.left = this.x;
         document.getElementById(this.bombId).style.top = this.y;
+
+        setTimeout(function () {
+            bombElement.setAttribute("class", "explodedbomb");
+        }, this.t);
+
     }
 }
