@@ -116,5 +116,12 @@
             border-radius: 50%;
             background-color: red;
         }
+        .greenbomb {
+            position: absolute ;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: green;
+        }
 
         @media screen and (max-width:750px) {}

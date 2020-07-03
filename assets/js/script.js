@@ -1,28 +1,29 @@
 import Bomb from "./Bomb";
-// var playerh = document.getElementById('playerman').style.height;
-// var playerw = document.getElementById('playerman').style.width;
-// var playerw = document.getElementById('playerman').style.getPropertyValue("width");
+// let playerh = document.getElementById('playerman').style.height;
+// let playerw = document.getElementById('playerman').style.width;
+// let playerw = document.getElementById('playerman').style.getPropertyValue("width");
 //     console.log(playerw);
 
-var boardh = 600;
-var boardw = 600;
-var playerh = 30;
-var playerw = 30;
-var playerx = boardh / playerh / 2;
-var playery = boardw / playerw / 2;
-var enemyh = 30;
-var enemyw = 30;
-var enemy1x = boardh / enemyh / 2;
-var enemy1y = boardw / enemyw / 2;
-var enemy2x = boardh / enemyh / 2;
-var enemy2y = boardw / enemyw / 2;
-var enemy3x = boardh / enemyh / 2;
-var enemy3y = boardw / enemyw / 2;
+let boardh = 600;
+let boardw = 600;
+let playerh = 30;
+let playerw = 30;
+let playerx = boardh / playerh / 2;
+let playery = boardw / playerw / 2;
+let enemyh = 30;
+let enemyw = 30;
+let enemy1x = boardh / enemyh / 2;
+let enemy1y = boardw / enemyw / 2;
+let enemy2x = boardh / enemyh / 2;
+let enemy2y = boardw / enemyw / 2;
+let enemy3x = boardh / enemyh / 2;
+let enemy3y = boardw / enemyw / 2;
 const maxx = boardh / playerh;
 const maxy = boardw / playerw;
 const minx = -1;
 const miny = -1;
 const refreshtime = 500;
+let bombcounter = 0;
 
 let playerid = document.querySelector("#playerman");
 
@@ -46,16 +47,9 @@ document.onkeydown = function () {
             playery++;
             break;
         case 32:
-            let test = new Bomb(playerx * playerw + "px", playery * playerh + playerh / 2 + "px",5000);
+            bombcounter++;
+            let test = new Bomb(playerx * playerw + "px", playery * playerh + playerh / 2 + "px", 5000, "bomb" + bombcounter, "greenbomb");
             test.drop();
-            var bombElement = document.createElement("div");
-            var gameboardElement = document.getElementById("gameboard");
-            bombElement.setAttribute("class", "redbomb");
-            gameboardElement.appendChild(bombElement);
-            // document.getElementById('bomb1').style.left = playerx * playerw + "px";
-            // document.getElementById('bomb1').style.top = playery * playerh + playerh / 2 + "px";
-            bombElement.style.left = playerx * playerw + "px";
-            bombElement.style.top = playery * playerh + playerh / 2 + "px";
             break;
     }
     if (playerx <= minx) { playerx = minx + 1; }
@@ -73,8 +67,8 @@ document.onkeydown = function () {
 
 // posXid.innerHTML = playerx;
 
-// var elem = document.getElementById("playerman");
-// var theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
+// let elem = document.getElementById("playerman");
+// let theCSSprop = parseInt(window.getComputedStyle(elem, null).getPropertyValue("width"));
 
 // console.log(theCSSprop);
 
